@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | Classic Typewriter Emporium</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="script.js" defer></script>
+<style>
+
+body {
+      font-size: 25px;
+  }
+  
+  nav a {
+      font-size: 30px;
+  }
+  
+  .home {
+      text-align: center;
+      padding: 20px;
+  }
+  
+  .typewriter-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+  }
+  
+  .home h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+  }
+  
+  .home p {
+      font-size: 22px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+  }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Classic Typewriter Emporium</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="promotion.html">Promotion</a>
+        <a href="about.html">About</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="support.html">Support</a>
+        <a href="company.html">Company</a>
+    </nav>
+
+    <section>
+        <h2>Customer Feedback</h2>
+        <form id="feedbackForm">
+            <label for="rating">Rate our product:</label>
+            <input type="range" id="rating" name="rating" min="1" max="5" required>
+
+            <label for="comments">Add your comments:</label>
+            <textarea id="comments" name="comments" rows="4" cols="50" required></textarea>
+
+            <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+        </form>
+    </section>
+
+    <section id="feedbackDisplay">
+        <h2>Feedback Received</h2>
+        <!-- Feedback will be displayed here -->
+    </section>
+<script>
+
+function submitFeedback() {
+    // Get values from the form
+    var rating = document.getElementById('rating').value;
+    var comments = document.getElementById('comments').value;
+
+    // Validate the form
+    if (rating && comments) {
+        // Log feedback to the console (you can replace this with your own logic, e.g., sending data to a server)
+        console.log('Rating:', rating);
+        console.log('Comments:', comments);
+
+        // Display feedback on the page
+        displayFeedback(rating, comments);
+
+        // Optionally, reset the form after submission
+        document.getElementById('feedbackForm').reset();
+
+        // Display a thank you message (you can customize this part)
+        alert('Thank you for your feedback!');
+    } else {
+        alert('Please provide both rating and comments before submitting.');
+    }
+}
+
+function displayFeedback(rating, comments) {
+    // Create a new feedback element
+    var feedbackElement = document.createElement('div');
+    feedbackElement.className = 'feedback-entry';
+
+    // Populate the feedback element
+    feedbackElement.innerHTML = '<strong>Rating:</strong> ' + rating + '<br>' +
+                                '<strong>Comments:</strong> ' + comments;
+
+    // Append the feedback element to the feedback display section
+    document.getElementById('feedbackDisplay').appendChild(feedbackElement);
+}
+
+
+</script>
+</body>
+</html>
